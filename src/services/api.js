@@ -4,12 +4,12 @@ import axios from "axios";
    BASE API
 ========================= */
 const API = axios.create({
-  baseURL: "https://bank-server-blcj.onrender.com",
+  baseURL: "https://bank-server-blcj.onrender.com/api",
   withCredentials: true,
 });
 
 /* =========================
-   REQUEST INTERCEPTOR (FIXED - SINGLE VERSION)
+   REQUEST INTERCEPTOR (SAFE)
 ========================= */
 API.interceptors.request.use((config) => {
   const stored = localStorage.getItem("bank_user");
@@ -51,7 +51,6 @@ API.interceptors.response.use(
           throw new Error("No refresh token");
         }
 
-        // FIXED: use production URL (NOT localhost)
         const response = await axios.post(
           "https://bank-server-blcj.onrender.com/api/auth/refresh-token",
           {
@@ -70,10 +69,7 @@ API.interceptors.response.use(
           accessToken: newAccessToken,
         };
 
-        localStorage.setItem(
-          "bank_user",
-          JSON.stringify(updatedUser)
-        );
+        localStorage.setItem("bank_user", JSON.stringify(updatedUser));
 
         originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
 
