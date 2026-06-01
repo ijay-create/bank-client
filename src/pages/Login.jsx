@@ -9,7 +9,8 @@ import "../styles/auth.css";
 
 function Login() {
   const navigate = useNavigate();
-  const { setUser } = useAuth();
+
+  const { login } = useAuth();
 
   const [formData, setFormData] = useState({
     email: "",
@@ -18,32 +19,48 @@ function Login() {
 
   const [loading, setLoading] = useState(false);
 
+  /* =========================
+     HANDLE INPUTS
+  ========================= */
   const handleChange = (e) => {
+    const { name, value } = e.target;
+
     setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value,
+      [name]: value,
     }));
   };
 
+  /* =========================
+     LOGIN
+  ========================= */
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       setLoading(true);
 
-      const res = await API.post("/auth/login", formData);
+      const res = await API.post(
+        "/auth/login",
+        formData
+      );
 
-      const data = res.data;
-
-    
-      localStorage.setItem("bank_user", JSON.stringify(data));
-
-  
-      setUser(data);
+      /* =========================
+         SAVE USER VIA CONTEXT
+      ========================= */
+      login(res.data);
 
       navigate("/dashboard");
     } catch (err) {
-      alert(err.response?.data?.message || "Login failed");
+      console.log(
+        "LOGIN ERROR:",
+        err.response?.data || err.message
+      );
+
+      alert(
+        err.response?.data?.message ||
+        "Login failed"
+      );
     } finally {
       setLoading(false);
     }
@@ -55,14 +72,20 @@ function Login() {
         className="auth-card"
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
       >
-        <h1 className="auth-title">Welcome Back</h1>
+        <h1 className="auth-title">
+          Welcome Back
+        </h1>
 
         <p className="auth-subtitle">
           Login to your banking account
         </p>
 
-        <form className="auth-form" onSubmit={handleSubmit}>
+        <form
+          className="auth-form"
+          onSubmit={handleSubmit}
+        >
           <input
             type="email"
             name="email"
@@ -70,6 +93,7 @@ function Login() {
             className="auth-input"
             value={formData.email}
             onChange={handleChange}
+            required
           />
 
           <input
@@ -79,17 +103,34 @@ function Login() {
             className="auth-input"
             value={formData.password}
             onChange={handleChange}
+            required
           />
 
-          <button className="auth-button" disabled={loading}>
-            {loading ? "Logging in..." : "Login"}
+          <button
+            type="submit"
+            className="auth-button"
+            disabled={loading}
+          >
+            {loading
+              ? "Logging in..."
+              : "Login"}
           </button>
         </form>
 
         <div className="auth-footer">
           <p>
-            Don’t have an account? <Link to="/register">Register</Link>
+            Don't have an account?{" "}
+            <Link to="/register">
+              Register
+            </Link>
           </p>
+
+          <Link
+            to="/forgot-password"
+            className="forgot-link"
+          >
+            Forgot Password?
+          </Link>
         </div>
       </motion.div>
     </div>
