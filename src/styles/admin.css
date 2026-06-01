@@ -1,0 +1,146 @@
+/* =========================
+   ADMIN DASHBOARD BASE
+========================= */
+.dashboard {
+  display: flex;
+  min-height: 100vh;
+  background: #0f172a; /* deep navy bank feel */
+  color: #e5e7eb;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* =========================
+   CONTENT AREA
+========================= */
+.dashboard-content {
+  flex: 1;
+  padding: 25px;
+  overflow-y: auto;
+}
+
+/* =========================
+   TITLE
+========================= */
+.dashboard-content h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+/* =========================
+   SECTION BOXES
+========================= */
+.transaction-section {
+  background: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.transaction-section h2 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #93c5fd;
+}
+
+/* =========================
+   TABLE STYLING
+========================= */
+.transaction-table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.transaction-table thead {
+  background: #1f2937;
+}
+
+.transaction-table th {
+  text-align: left;
+  padding: 12px;
+  font-size: 13px;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.transaction-table td {
+  padding: 12px;
+  border-bottom: 1px solid #1f2937;
+  font-size: 14px;
+  color: #e5e7eb;
+}
+
+/* hover effect */
+.transaction-table tbody tr:hover {
+  background: #1e293b;
+  transition: 0.2s;
+}
+
+/* =========================
+   STATUS COLORS
+========================= */
+.debit {
+  color: #ef4444;
+  font-weight: 600;
+}
+
+.credit {
+  color: #22c55e;
+  font-weight: 600;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+.logout-btn {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: 0.2s;
+}
+
+.logout-btn:hover {
+  background: #1d4ed8;
+  transform: scale(1.03);
+}
+
+/* freeze button variation */
+.transaction-section button {
+  background: #ef4444;
+}
+
+.transaction-section button:hover {
+  background: #dc2626;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .dashboard {
+    flex-direction: column;
+  }
+
+  .dashboard-content {
+    padding: 15px;
+  }
+
+  .transaction-table {
+    font-size: 12px;
+  }
+
+  .transaction-table td,
+  .transaction-table th {
+    padding: 10px;
+  }
+}

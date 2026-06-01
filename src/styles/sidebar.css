@@ -1,0 +1,132 @@
+
+/* =========================
+   APP LAYOUT WRAPPER
+========================= */
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+  background: #0b1220;
+  color: #e5e7eb;
+  font-family: "Inter", sans-serif;
+}
+
+/* =========================
+   SIDEBAR (DESKTOP - LEFT FIXED)
+========================= */
+.sidebar {
+  width: 260px;
+  background: #0f172a;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+
+  display: flex;
+  flex-direction: column;
+
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+
+  padding: 20px;
+  z-index: 1000;
+}
+
+/* LOGO */
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #ffffff;
+}
+
+/* LINKS */
+.sidebar-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sidebar-link {
+  text-decoration: none;
+  color: #cbd5e1;
+
+  padding: 12px 14px;
+  border-radius: 10px;
+
+  transition: 0.2s ease;
+}
+
+.sidebar-link:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+}
+
+.sidebar-link.active {
+  background: #1d4ed8;
+  color: white;
+}
+
+/* =========================
+   MAIN CONTENT
+========================= */
+.page-content {
+  margin-left: 260px;
+  width: calc(100% - 260px);
+  padding: 25px;
+  min-height: 100vh;
+}
+
+/* =========================
+   MOBILE MODE (TOP NAVBAR STYLE)
+========================= */
+@media (max-width: 768px) {
+
+  .app-layout {
+    flex-direction: column;
+  }
+
+  /* Sidebar becomes TOP BAR */
+  .sidebar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    width: 100%;
+    height: auto;
+
+    flex-direction: row;
+    align-items: flex-start;
+
+    padding: 15px;
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  /* LOGO stays on top */
+  .logo {
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+
+  /* LINKS become horizontal wrap */
+  .sidebar-links {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .sidebar-link {
+    padding: 10px 12px;
+    font-size: 14px;
+    flex: 1;
+    text-align: center;
+  }
+
+  /* CONTENT FULL WIDTH */
+  .page-content {
+    margin-left: 0;
+    width: 100%;
+    padding: 15px;
+  }
+}

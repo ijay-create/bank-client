@@ -1,0 +1,168 @@
+/* =========================
+   PAGE WRAPPER
+========================= */
+.transfer-page {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #111827, #0f172a);
+  color: white;
+  overflow-x: hidden;
+  font-family: "Inter", sans-serif;
+}
+
+/* =========================
+   CONTENT AREA
+========================= */
+.transfer-content {
+  margin-left: 260px;
+  width: calc(100% - 260px);
+
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 30px;
+
+  box-sizing: border-box;
+}
+
+/* =========================
+   TRANSFER CARD
+========================= */
+.transfer-card {
+  width: 100%;
+  max-width: 550px;
+
+  padding: 35px;
+
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+
+  border: 1px solid rgba(255, 255, 255, 0.05);
+
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.transfer-card h1 {
+  text-align: center;
+  margin-bottom: 25px;
+
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+/* =========================
+   FORM
+========================= */
+.transfer-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.transfer-input {
+  width: 100%;
+
+  padding: 15px;
+
+  border-radius: 12px;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  background: rgba(255, 255, 255, 0.03);
+
+  color: white;
+
+  outline: none;
+
+  transition: 0.3s ease;
+  box-sizing: border-box;
+}
+
+.transfer-input:focus {
+  border-color: #3b82f6;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.transfer-input::placeholder {
+  color: #94a3b8;
+}
+
+/* =========================
+   BUTTON
+========================= */
+.transfer-btn {
+  padding: 15px;
+
+  border: none;
+  border-radius: 12px;
+
+  background: linear-gradient(
+    135deg,
+    #3b82f6,
+    #2563eb
+  );
+
+  color: white;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.3s ease;
+}
+
+.transfer-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* =========================
+   TABLET
+========================= */
+@media (max-width: 1024px) {
+  .transfer-content {
+    margin-left: 220px;
+    width: calc(100% - 220px);
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 768px) {
+  .transfer-content {
+    margin-left: 0;
+    width: 100%;
+
+    padding: 20px;
+  }
+
+  .transfer-card {
+    padding: 25px;
+  }
+
+  .transfer-card h1 {
+    font-size: 1.7rem;
+  }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+@media (max-width: 480px) {
+  .transfer-card {
+    padding: 20px;
+  }
+
+  .transfer-card h1 {
+    font-size: 1.4rem;
+  }
+
+  .transfer-input,
+  .transfer-btn {
+    padding: 14px;
+  }
+}
